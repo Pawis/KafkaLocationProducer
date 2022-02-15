@@ -1,0 +1,12 @@
+server.port: 8006
+spring:
+   kafka: 
+      producer:
+         bootstrap-servers: localhost:9092
+         key-serializer: org.apache.kafka.common.serialization.StringSerializer
+         value-serializer: com.example.demo.serializer.LocationSerializer
+         compression-type: zstd
+         batch-size: 32768
+         properties:  
+            linger.ms: 20
+   

@@ -25,7 +25,7 @@ public class KafkaProducer {
 	
 	public void sendMessage(LocationDto location,String key) {
 		log.info("Sending message...");
-		this.locationKafkaTemplate.send("gps5",key,location).addCallback(new ListenableFutureCallback<SendResult<String,LocationDto>>() {
+		this.locationKafkaTemplate.send("locations",key,location).addCallback(new ListenableFutureCallback<SendResult<String,LocationDto>>() {
 
 			@Override
 			public void onSuccess(SendResult<String, LocationDto> result) {

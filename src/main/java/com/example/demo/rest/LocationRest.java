@@ -1,5 +1,7 @@
 package com.example.demo.rest;
 
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,10 +29,12 @@ public class LocationRest {
 
 	}
 
-	@PostMapping("/publish")
-	public void publishLocationDto(@RequestBody LocationDto location) {
+	@PostMapping(value = "/publish")
+	public void publishLocationDto( @RequestBody @Valid LocationDto location) {
 		
-		log.info("Entering publishLocationDto endpoint");
+		log.info("Entering publishLocationDto endpoint with"
+				+ " deviceId: {} latitiude: {} longitude: {}"
+				,location.getDeviceId(),location.getLatitiude(),location.getLongitude());
 		kafkaProducer.sendMessage(location,location.getDeviceId());
 
 	}

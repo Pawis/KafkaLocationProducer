@@ -1,13 +1,26 @@
 package com.example.demo.model.dto;
 
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
+import org.hibernate.validator.constraints.Range;
 
 public class LocationDto {
 
+	@NotNull
+	@Range(min = 0, max = 9999999)
 	private String deviceId;
-	private int latitiude;
-	private int longitude;
+	
+	@NotNull
+	@Digits(integer=7, fraction=0)
+	private Integer latitiude;
 
-	public LocationDto(String deviceId, int latitiude, int longitude) {
+	@NotNull
+	@Digits(integer=7, fraction=0)
+	private Integer longitude;
+
+	public LocationDto(String deviceId, Integer latitiude, Integer longitude) {
 		this.deviceId = deviceId;
 		this.latitiude = latitiude;
 		this.longitude = longitude;
@@ -32,25 +45,25 @@ public class LocationDto {
 
 
 
-	public int getLatitiude() {
+	public Integer getLatitiude() {
 		return latitiude;
 	}
 
 
 
-	public void setLatitiude(int latitiude) {
+	public void setLatitiude(Integer latitiude) {
 		this.latitiude = latitiude;
 	}
 
 
 
-	public int getLongitude() {
+	public Integer getLongitude() {
 		return longitude;
 	}
 
 
 
-	public void setLongitude(int longitude) {
+	public void setLongitude(Integer longitude) {
 		this.longitude = longitude;
 	}
 

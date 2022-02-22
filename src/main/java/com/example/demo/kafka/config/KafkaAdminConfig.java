@@ -13,24 +13,23 @@ import org.springframework.kafka.core.KafkaAdmin;
 
 @Configuration
 public class KafkaAdminConfig {
-	
+
 	@Value(value = "${spring.kafka.producer.bootstrap-servers}")
-	  private String bootstrapServers;
-	
-	
+	private String bootstrapServers;
+
+
 	@Bean
-	  public KafkaAdmin kafkaAdmin() {
-		
-	
-	    Map<String, Object> configs = new HashMap<>();
-	    
-	    configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
-	    return new KafkaAdmin(configs);
+	public KafkaAdmin kafkaAdmin() {
+
+		Map<String, Object> configs = new HashMap<>();
+
+		configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
+		return new KafkaAdmin(configs);
 	}
-	
+
 	@Bean
 	public NewTopic newTopic() {
-		
+
 		return TopicBuilder
 				.name("gps5")
 				.partitions(6)

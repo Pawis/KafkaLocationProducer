@@ -17,7 +17,6 @@ public class KafkaAdminConfig {
 	@Value(value = "${spring.kafka.producer.bootstrap-servers}")
 	private String bootstrapServers;
 
-
 	@Bean
 	public KafkaAdmin kafkaAdmin() {
 
